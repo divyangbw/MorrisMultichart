@@ -84,6 +84,11 @@ var MorrisMultiCharts = function () {
         },
         
         SwitchToLineGraphs: function() {
+			if(!CheckIfInitialized())
+			{
+				console.log("Not Initialized.");
+				return false;
+			}
             Destroy();
             try {
                 lineGraph = Morris.Line(privateOptions);
@@ -92,14 +97,21 @@ var MorrisMultiCharts = function () {
                 lineGraphInitialized = true;
                 areaGraphInitialized = false;
                 barGraphInitialized = false;
+				return true;
             }
             catch (err) {
                 console.log("Oops. Your data is corrupted :(");
+				return false;
             }
         },
         
         SwitchToAreaGraphs: function () {
-            Destroy();
+            if(!CheckIfInitialized())
+			{
+				console.log("Not Initialized.");
+				return false;
+			}
+			Destroy();
             try {
                 areaGraph = Morris.Area(privateOptions);
                 barGraph = null;
@@ -107,14 +119,21 @@ var MorrisMultiCharts = function () {
                 lineGraphInitialized = false;
                 areaGraphInitialized = true;
                 barGraphInitialized = false;
+				return true;
             }
             catch (err) {
                 console.log("Oops. Your data is corrupted :(");
+				return false;
             }
         },
         
         SwitchToBarGraphs: function () {
-            Destroy();
+            if(!CheckIfInitialized())
+			{
+				console.log("Not Initialized.");
+				return false;
+			}
+			Destroy();
             try {
                 barGraph = Morris.Bar(privateOptions);
                 areaGraph = null;
@@ -122,9 +141,11 @@ var MorrisMultiCharts = function () {
                 lineGraphInitialized = false;
                 areaGraphInitialized = false;
                 barGraphInitialized = true;
+				return true;
             }
             catch (err) {
                 console.log("Oops. Your data is corrupted :(");
+				return false;
             }
         },
 
@@ -133,5 +154,12 @@ var MorrisMultiCharts = function () {
         },
         
     };
+	
+	function CheckIfInitialized() {
+		if(!lineGraphInitialized || !areaGraphInitialized || !barGraphInitialized) {
+			return false;
+		}
+		return true;
+	}
 	
 }();
