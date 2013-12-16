@@ -1,5 +1,38 @@
 var MorrisMultiCharts = function () {
     
+	var mcelement;
+	var mcdata;
+	var mcxkey;
+	var mcykeys;
+	var mclabels;
+	var mclineColors = [];
+	var mclineWidth = 1;
+	var mcpointSize = 3;
+	var mcpointFillColors = [""];
+	var mcpointStrokeColors = ["#fff"];
+	var mcymax = "auto";
+	var mcymin = "auto 0";
+	var mcsmooth = true;
+	var mchideHover = false;
+	var mcparseTime = true;
+	var mcpostUnits = "";
+	var mcpreUnits = "";
+	var mcxLabels = "";
+	var mcgoals = [];
+	var mcgoalStrokeWidth = 1;
+	var mcgoalLineColors = [""];
+	var mcevents = [];
+	var mceventStrokeWidth = 1;
+	var mceventLineColors = [""];
+	var mccontinuousLine = false;
+	var mcaxes = true;
+	var mcgrid = true;
+	var mcgridTextColor = [""];
+	var mcgridTextSize = 12;
+	var mcgridTextFamily = "sans-serif";
+	var mcgridTextFamily = "normal";
+	var mcfillOpacity = null;
+	
     //Graph Data
     var htmlId = "";
     var graphData = [];
@@ -22,15 +55,16 @@ var MorrisMultiCharts = function () {
     
     return {
         
-        InitializeGraphs: function (options, idVal, dataInput, xkeyInput, ykeysInput, labelsInput) {
+        InitializeGraphs: function (options) {
 
             try {
                 
-                if (options.idVal === null || options.dataInput === null ||
-                    options.xkeyInput === null || options.ykeysInput === null) {
+                if (options.element === null || options.data === null ||
+                    options.xkey === null || options.ykeys === null) {
                     console.log("One of the required inputs is null.");
 					return;
                 }
+				MapData(options);
 
                 // We need access to these later on, hence saving em :)
                 htmlId = options.idVal;
@@ -176,4 +210,41 @@ var MorrisMultiCharts = function () {
         }
 
     };
+	
+	function MapData(options)
+	{
+		options.element = mcelement;
+		options.data = mcdata;
+		options.xkey = mcxkey;
+		options.ykeys = mcykeys;
+		options.labels = mclabels;
+		options.lineColors = mclineColors;
+		options.lineWidth = mclineWidth;
+		options.pointSize = mcpointSize;
+		options.pointFillColors = mcpointFillColors;
+		options.pointStrokeColors = mcpointStrokeColors;
+		options.ymax = mcymax;
+		options.ymin = mcymin;
+		options.smooth = mcsmooth;
+		options.hideHover = mchideHover;
+		options.parseTime = mcparseTime;
+		options.postUnits = mcpostUnits;
+		options.preUnits = mcpreUnits;
+		options.xLabels = mcxLabels;
+		options.goals = mcgoals;
+		options.goalStrokeWidth = mcgoalStrokeWidth;
+		options.goalLineColors = mcgoalLineColors;
+		options.events = mcevents;
+		options.eventStrokeWidth = mceventStrokeWidth;
+		options.eventLineColors = mceventLineColors;
+		options.continuousLine = mccontinuousLine;
+		options.axes = mcaxes;
+		options.grid = mcgrid;
+		options.gridTextColor = mcgridTextColor;
+		options.gridTextSize = mcgridTextSize;
+		options.gridTextFamily = mcgridTextFamily;
+		options.gridTextFamily = mcgridTextFamily;
+		options.fillOpacity = mcfillOpacity;
+	}
+	
 }();
