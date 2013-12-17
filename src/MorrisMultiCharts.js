@@ -162,4 +162,12 @@ var MorrisMultiCharts = function () {
 		return true;
 	}
 	
+	//TODO
+	function GenerateHtml()
+	{
+		$("#" + privateOptions.element).wrap( "<div class='mmc-graphs-wrapper'></div>" );
+				 
+		
+	}
+	
 }();
