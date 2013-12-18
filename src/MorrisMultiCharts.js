@@ -1,5 +1,6 @@
 var MorrisMultiCharts = function () {
     
+	/*
 	var privateOptions = {
 		element : null,
 		data : null,
@@ -31,9 +32,12 @@ var MorrisMultiCharts = function () {
 		gridTextColor : [""],
 		gridTextSize : 12,
 		gridTextFamily : "sans-serif",
-		gridTextFamily : "normal",
+		gridTextWeight : "normal",
 		fillOpacity : null
 	}
+	*/
+	
+	var privateOptions = {};
 	
     
     var lineGraph = null;
@@ -43,6 +47,7 @@ var MorrisMultiCharts = function () {
     var lineGraphInitialized = false;
     var areaGraphInitialized = false;
     var barGraphInitialized = false;
+	var isInit = false;
     
     return {
         
@@ -55,10 +60,13 @@ var MorrisMultiCharts = function () {
                     console.log("One of the required inputs is null.");
 					return;
                 }
-				$.extend(privateOptions, options);
+				$.extend(true, privateOptions, options);
 
+				GenerateHtml();
+				EventHandlers();
                 // By default, we will show a line graph
                 lineGraph = Morris.Line(privateOptions);
+				isInit = true;
                 lineGraphInitialized = true;
                 areaGraphInitialized = false;
                 barGraphInitialized = false;
@@ -149,25 +157,67 @@ var MorrisMultiCharts = function () {
             }
         },
 
-        Destroy: function() {
-            $("#" + htmlId).html("");
+        DestroyCurrentChartView: function() {
+            Destroy();
         },
         
     };
 	
+	function Destroy(){
+		if(CheckIfInitialized()) {
+			$("#" + privateOptions.element).html("");
+		} else {
+			console.log("Not Initialized.");
+		}
+		
+	}
+	
 	function CheckIfInitialized() {
-		if(!lineGraphInitialized || !areaGraphInitialized || !barGraphInitialized) {
+		if(!isInit) {
 			return false;
 		}
 		return true;
 	}
 	
-	//TODO
-	function GenerateHtml()
-	{
-		$("#" + privateOptions.element).wrap( "<div class='mmc-graphs-wrapper'></div>" );
-				 
+	function GenerateHtml()	{
+		$('#' + privateOptions.element).wrap( "<div class='mmc-graphs-wrapper'></div>" );		
+		$("<div class='mmc-graphs-btn-wrapper'></div>").prependTo('.mmc-graphs-wrapper');
+		$('.mmc-graphs-btn-wrapper').append( 
+			"<a href='javascript:;' id='mmc-graphs-switch-line' class='mmc-graphs-active'> Line </a> " +
+			"<a href='javascript:;' id='mmc-graphs-switch-area' class=''> Area </a> " +
+			"<a href='javascript:;' id='mmc-graphs-switch-bar' class=''> Bar </a>"
+		);		 
 		
+	}
+	
+	function EventHandlers() {
+		$('#mmc-graphs-switch-line').click(function () {
+			if(!$(this).hasClass( "mmc-graphs-active" )) {
+				MorrisMultiCharts.SwitchToLineGraphs();
+				RemoveAllActiveInButtons();
+				$(this).addClass( "mmc-graphs-active" );
+			}
+		});
+		$('#mmc-graphs-switch-area').click(function () {
+			if(!$(this).hasClass( "mmc-graphs-active" )) {
+				MorrisMultiCharts.SwitchToAreaGraphs();
+				RemoveAllActiveInButtons();
+				$(this).addClass( "mmc-graphs-active" );
+			}
+		});
+		$('#mmc-graphs-switch-bar').click(function () {
+			if(!$(this).hasClass( "mmc-graphs-active" )) {
+				MorrisMultiCharts.SwitchToBarGraphs();
+				RemoveAllActiveInButtons();
+				$(this).addClass( "mmc-graphs-active" );
+			}
+		});
+	}
+	
+	function RemoveAllActiveInButtons() {
+		$('#mmc-graphs-switch-line').removeClass( "mmc-graphs-active" );
+		$('#mmc-graphs-switch-area').removeClass( "mmc-graphs-active" );
+		$('#mmc-graphs-switch-bar').removeClass( "mmc-graphs-active" );
 	}
 	
 }();

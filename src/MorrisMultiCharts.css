@@ -1,0 +1,54 @@
+.mmc-graphs-btn-wrapper {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.mmc-graphs-btn-wrapper a {
+    background-color: #41cac0;
+    border-color: #41cac0;
+    color: #FFFFFF;
+    text-decoration: none;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.428571429;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+    user-select: none;
+    outline: none !important;
+}
+
+.mmc-graphs-btn-wrapper a:hover {
+    background-color: #39b2a9;
+    border-color: #39b2a9;
+    color: #FFFFFF;
+}
+
+.mmc-graphs-btn-wrapper a:active {
+    box-shadow: none;    
+}
+
+
+.mmc-graphs-btn-wrapper a:focus {
+    background-color: #39b2a9;
+    border-color: #39b2a9;
+    color: #FFFFFF;  
+}
+
+.mmc-graphs-active {
+    cursor: default !important;
+    background-color: #eee !important;
+    border-color: #eee !important;
+    color: #808080 !important;
+}
