@@ -66,7 +66,8 @@ var options = {
 var exampleChartOne = MorrisMultiCharts;
 exampleChartOne.InitializeGraphs(options);
 
-// If you decide to use only one instance of the chart on the page, you can infact call multicharts like this:
+// If you decide to use only one instance of the chart on the page, 
+// you can infact call multicharts like this:
 MorrisMultiCharts.InitializeGraphs(options);
 
 ```
