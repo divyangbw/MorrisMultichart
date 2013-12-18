@@ -1,45 +1,6 @@
 var MorrisMultiCharts = function () {
-    
-	/*
-	var privateOptions = {
-		element : null,
-		data : null,
-		xkey : null,
-		ykeys : null,
-		labels : null,
-		lineColors : [],
-		lineWidth : 1,
-		pointSize : 3,
-		pointFillColors : [""],
-		pointStrokeColors : ["#fff"],
-		ymax : "auto",
-		ymin : "auto 0",
-		smooth : true,
-		hideHover : false,
-		parseTime : true,
-		postUnits : "",
-		preUnits : "",
-		xLabels : "",
-		goals : [],
-		goalStrokeWidth : 1,
-		goalLineColors : [""],
-		events : [],
-		eventStrokeWidth : 1,
-		eventLineColors : [""],
-		continuousLine : false,
-		axes : true,
-		grid : true,
-		gridTextColor : [""],
-		gridTextSize : 12,
-		gridTextFamily : "sans-serif",
-		gridTextWeight : "normal",
-		fillOpacity : null
-	}
-	*/
+    var privateOptions = {};
 	
-	var privateOptions = {};
-	
-    
     var lineGraph = null;
     var areaGraph = null;
     var barGraph = null;
