@@ -20,58 +20,131 @@
   <body>
     
 	<!-- -->
-	<div id="wrap">
-
-      <!-- Begin page content -->
-      <div class="container">
-        <div class="page-header">
-          <h1>MorrisMulticharts Example</h1>
-		  
-		  <div class="row">
-			<div class="col-md-3 col-sm-">
-				<a class="btn btn-default" href="https://github.com/divyangbw/MorrisMultichart">&#8592; Go Back</a>
-			</div>
-			<div class="col-md-3">
-				<iframe src="http://ghbtns.com/github-btn.html?user=divyangbw&repo=MorrisMultichart&type=watch&count=true" height="30" width="170" frameborder="0" scrolling="0" allowTransparency="true"></iframe>
-			</div>
-			<div class="col-md-3">
-				<iframe src="http://ghbtns.com/github-btn.html?user=divyangbw&repo=MorrisMultichart&type=fork&count=true" height="30" width="170" frameborder="0" scrolling="0" allowTransparency="true"></iframe>
-			</div>
-			<div class="col-md-3">
-				<iframe src="http://ghbtns.com/github-btn.html?user=divyangbw&type=follow&count=true" height="30" width="240" frameborder="0" scrolling="0" allowTransparency="true"></iframe>
-			</div>
+	<div id="wrap">     
+		<div class="container">
+				
+			<div class="row">
+				<div class="col-md-3 col-sm-">
+					
+				</div>
+				
 		  
 		  </div>
-		  
-		  
-        </div>
-        
-		<div class="container">
 		
-			<div class="row">
-				<div id="example-chart"></div>
+		
+			<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="javascript:;">MorrisMulticharts Example</a>
+					</div>
+					<div class="collapse navbar-collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="javascript:;">Home</a></li>		
+							<li><a href="https://github.com/divyangbw/MorrisMultichart">&#8592; Source Code</a></li>		
+							<li><a href="http://www.divyangjoshi.com/">Other Projects</a></li>		
+						</ul>
+						<ul class="nav navbar-nav navbar-right">
+							<li class="pull-right"><a href="http://www.divyangjoshi.com/">Personal Homepage</a></li>
+					    </ul>
+					</div><!--/.nav-collapse -->
+				</div>
 			</div>
-			
+		
+			<div class="jumbotron">
+				<div class="container">
+					<h4>What is Multicharts?</h4>
+					<h5>An extension for Morris charts, allowing users to display multiple charts from the same data source.</h5>
+					
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-4">
+							<iframe src="http://ghbtns.com/github-btn.html?user=divyangbw&repo=MorrisMultichart&type=watch&count=true" height="30" width="150" frameborder="0" scrolling="0" allowTransparency="true"></iframe>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-4">
+							<iframe src="http://ghbtns.com/github-btn.html?user=divyangbw&repo=MorrisMultichart&type=fork&count=true" height="30" width="150" frameborder="0" scrolling="0" allowTransparency="true"></iframe>
+						</div>
+						<div class="col-xs-12 col-sm-12 col-md-4">
+							<iframe src="http://ghbtns.com/github-btn.html?user=divyangbw&type=follow&count=true" height="30" width="200" frameborder="0" scrolling="0" allowTransparency="true"></iframe>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		
+			<div class="container">
+				<div class="row">
+					<h3>A Simple Example</h3>
+					<div id="example-chart"></div>
+										
+					<hr/>
+					
+					<div class="col-md-6">
+						
+						<h4>Setup</h4>
+						<pre>
+						
+// To get all data options, see Morris.js project page
+var options = {
+	element: 'example-chart',
+	data: [
+		{ y: '2006', a: 100, b: 90 },
+		{ y: '2007', a: 75,  b: 65 },
+		{ y: '2008', a: 50,  b: 40 },
+		{ y: '2009', a: 75,  b: 65 },
+		{ y: '2010', a: 50,  b: 40 },
+		{ y: '2011', a: 75,  b: 65 },
+		{ y: '2012', a: 100, b: 90 }
+	],
+	xkey: 'y',
+	ykeys: ['a', 'b'],
+	labels: ['Series A', 'Series B']
+};
+
+var exampleChartOne = MorrisMultiCharts;
+exampleChartOne.InitializeGraphs(options);
+
+// If you decide to use only one instance of the chart on the page, 
+// you can infact call multicharts like this:
+MorrisMultiCharts.InitializeGraphs(options);
+					
+						</pre>
+					
+					</div>
+					<div class="col-md-6">
+						<h4>Required Fields</h4>
+						<ol>
+							<li>element, which is the id of the element to convert to charts. Example: For a div, id="example-chart".</li>
+							<li>data</li>
+							<li>xkey: What represents the x-key from the data </li>
+							<li>ykeys: what represents the y-keys from the data</li>
+							<li>labels: Although this wont break the charts if you don't define it.</li>
+						</ol>
+						<p>For a full list of options, see the extension: </p>
+						<a class="btn btn-default" href="http://www.oesmith.co.uk/morris.js">Morris.js</a>
+					
+					</div>
+					
+					
+					
+				</div>
+			</div>
+		
 		
 		</div>
 		
-		<div class="container">
-		
-			<div class="row">
-				
-			</div>
-			
-		
-		</div>
-		
-      </div>
     </div>
 	<!-- -->
 	
 	<!-- -->
 	<div id="footer">
       <div class="container">
-        <p class="text-muted">Place sticky footer content here.</p>
+        <p class="text-muted">&#169; Divyang Joshi 2013</p>
       </div>
     </div>
 	<!-- -->
