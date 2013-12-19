@@ -16,9 +16,7 @@ var MorrisMultiCharts = function () {
 
             try {
                 
-                if (options.element === null || options.data === null ||
-                    options.xkey === null || options.ykeys === null) {
-                    console.log("One of the required inputs is null.");
+                if(!IsErrorFree(options)){
 					return;
                 }
 				$.extend(true, privateOptions, options);
@@ -34,7 +32,7 @@ var MorrisMultiCharts = function () {
 
             }
             catch (err) {
-                console.log("Oops. Your data is corrupted :(");
+                console.log("Oops. Your options are corrupted :(");
             }
         },
         
@@ -179,6 +177,21 @@ var MorrisMultiCharts = function () {
 		$('#mmc-graphs-switch-line').removeClass( "mmc-graphs-active" );
 		$('#mmc-graphs-switch-area').removeClass( "mmc-graphs-active" );
 		$('#mmc-graphs-switch-bar').removeClass( "mmc-graphs-active" );
+	}
+	
+	function IsErrorFree(options) {
+		if(typeof options === 'undefined' || !options) {
+			console.log("options cannot be null.");
+			return false;
+		}
+		if (typeof options.element !== 'undefined' && options.element || 
+			typeof options.data !== 'undefined' && options.data   || 
+			typeof options.xkey !== 'undefined' && options.xkey || 
+			typeof options.ykeys !== 'undefined' && options.ykeys) {
+			return true;
+		}
+		console.log("One of the required elements is null.");
+		return false;
 	}
 	
 }();
